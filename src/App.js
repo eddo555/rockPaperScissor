@@ -10,36 +10,56 @@ function App() {
   const [cpuCount, setCpuCount] = useState(0);
 
   function pickWinner(input) {
-    
     const cpuInput = cpuHandSelect();
     setMyHand(input);
-    setCpuHand(cpuInput)
+    setCpuHand(cpuInput);
   }
 
   function cpuHandSelect() {
-    var choice = Math.floor(Math.random() * (3 - 1 + 1) + 1);
+    var cpuChoice = Math.floor(Math.random() * (3 - 1 + 1) + 1);
 
-    if (choice === 1) {
-      return 'rock'
-    } else if (choice === 2) {
-      return 'paper'
+    if (cpuChoice === 1) {
+      return "rock";
+    } else if (cpuChoice === 2) {
+      return "paper";
     } else {
-      return 'scissor'
+      return "scissor";
     }
   }
 
-
+  console.log(`myhand: ${myHand} \ncpuhand: ${cpuHand}`);
   return (
-    <div
-      style={{ backgroundColor: "#80FF72", width: "100vw", height: "100vh" }}
-    >
+    <main>
+      <div className="title-wrapper">
       <h1>Choose</h1>
-      <img src={Rock} alt="rock" onClick={() => pickWinner("rock")} />
-      <img src={Paper} alt="paper" onClick={() => pickWinner("paper")} />
-      <img src={Scissor} alt="scissor" onClick={() => pickWinner("scissor")} />
-      <h4>{count}</h4>
-      <h4>{cpuCount}</h4>
-    </div>
+      </div>
+
+      <div className="hand-wrapper">
+        <img
+          className="hand"
+          src={Rock}
+          alt="rock"
+          onClick={() => pickWinner("rock")}
+        />
+        <img
+          className="hand"
+          src={Paper}
+          alt="paper"
+          onClick={() => pickWinner("paper")}
+        />
+        <img
+          className="hand"
+          src={Scissor}
+          alt="scissor"
+          onClick={() => pickWinner("scissor")}
+        />
+      </div>
+
+      <div className="counter-wrapper">
+        <h4>{count}</h4>
+        <h4>{cpuCount}</h4>
+      </div>
+    </main>
   );
 }
 
