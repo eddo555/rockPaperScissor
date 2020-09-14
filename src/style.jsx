@@ -15,18 +15,26 @@ grid-template-rows: repeat(5, 20%)
 .title-wrapper {
     border:solid green;
     grid-column:4/8;
-    grid-row:2/2;
+    grid-row:1/3;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    font-size:6vw;
 }
 .hand-wrapper {
     border:solid red;
     grid-column:2/10;
     grid-row: 3/4;
     display:flex;
-    justify-content:space-around;
+    justify-content:space-between;
 }
 .hand {
      
-     object-fit:contain
+     object-fit:contain;
+     max-width:300px;
+     min-width:50px;
+     
 }
 .counter-wrapper {
     border:solid blue;
