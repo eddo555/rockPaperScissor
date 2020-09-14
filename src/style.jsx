@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 const Style = styled.div`
 
+
 main {
 background-color:#80FF72;
 width:100vw;
@@ -9,7 +10,7 @@ height:100vh;
 
 display:grid;
 grid-template-columns: repeat(10, 10%);
-grid-template-rows: repeat(5, 20%);
+grid-template-rows: repeat(7, 15%);
 font-family:"rockwell";
 
 }
@@ -21,7 +22,7 @@ font-family:"rockwell";
     justify-content:center;
     align-items:center;
     text-align:center;
-    font-size:6vw;
+    font-size:4vw;
 }
 .hand-wrapper {
     grid-column:2/10;
@@ -34,9 +35,9 @@ font-family:"rockwell";
      object-fit:contain;
      max-width:200px;
      min-width:50px;
-     
+     cursor:pointer;     
 }
-.counter-wrapper {
+.choices {
     grid-column: 2/10;
     grid-row: 5/5;
     display:flex;
@@ -44,6 +45,15 @@ font-family:"rockwell";
     align-items:center;
     font-size:4vw;
 }
+.counter-wrapper {
+    grid-column: 2/10;
+    grid-row: 6/6;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    font-size:3vw;
+}
+
 
 `
 

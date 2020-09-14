@@ -5,12 +5,10 @@ import Style from './style'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
     <Style>
     <App />
     </Style>
-  </React.StrictMode>,
-  document.getElementById('root')
+  ,document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
