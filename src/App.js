@@ -8,14 +8,19 @@ function App() {
   const [cpuHand, setCpuHand] = useState();
   const [count, setCount] = useState(0);
   const [cpuCount, setCpuCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   function pickWinner(input) {
     const cpuInput = cpuHandSelect();
 
     setMyHand(input);
     setCpuHand(cpuInput);
-  }
 
+    setTimeout(() => {
+      setIsLoading(true);
+    }, 1500);
+    setIsLoading(false);
+  }
   function cpuHandSelect() {
     var cpuChoice = Math.floor(Math.random() * (3 - 1 + 1) + 1);
 
@@ -29,32 +34,24 @@ function App() {
   }
 
   useEffect(() => {
-    if (myHand === cpuHand && myHand !== undefined) {
-      setCount((prevCount) => prevCount + 1);
-      setCpuCount((prevCount) => prevCount + 1);
-    }
-    else if(myHand === "rock" && cpuHand === "scissor") {
-      setCount((prevCount) => prevCount + 1);
-    }
-    else if(myHand === "paper" && cpuHand === "rock") {
-      setCount((prevCount) => prevCount + 1);
-    }
-    else if(myHand === "scissor" && cpuHand === "paper") {
-      setCount((prevCount) => prevCount + 1);
-    }
-
-
-    else if(cpuHand === "rock" && myHand === "scissor") {
-      setCpuCount((prevCount) => prevCount + 1);
-    }
-    else if(cpuHand === "paper" && myHand === "rock") {
-      setCpuCount((prevCount) => prevCount + 1);
-    }
-    else if(cpuHand === "scissor" && myHand === "paper") {
-      setCpuCount((prevCount) => prevCount + 1);
-    }
-    
-    
+    setTimeout(() => {
+      if (myHand === cpuHand && myHand !== undefined) {
+        setCount((prevCount) => prevCount + 1);
+        setCpuCount((prevCount) => prevCount + 1);
+      } else if (myHand === "rock" && cpuHand === "scissor") {
+        setCount((prevCount) => prevCount + 1);
+      } else if (myHand === "paper" && cpuHand === "rock") {
+        setCount((prevCount) => prevCount + 1);
+      } else if (myHand === "scissor" && cpuHand === "paper") {
+        setCount((prevCount) => prevCount + 1);
+      } else if (cpuHand === "rock" && myHand === "scissor") {
+        setCpuCount((prevCount) => prevCount + 1);
+      } else if (cpuHand === "paper" && myHand === "rock") {
+        setCpuCount((prevCount) => prevCount + 1);
+      } else if (cpuHand === "scissor" && myHand === "paper") {
+        setCpuCount((prevCount) => prevCount + 1);
+      }
+    }, 1500);
   }, [myHand, cpuHand]);
 
   console.log(`myhand: ${myHand} \ncpuhand: ${cpuHand}`);
@@ -84,11 +81,21 @@ function App() {
           onClick={() => pickWinner("scissor")}
         />
       </div>
-      <div className="choices">
-        <p>{myHand}</p>
-        <p>{cpuHand}</p>
-      </div>
 
+      {count === 0 && cpuCount === 0 ? (
+        <div className="choices">
+          <p>Begin</p>
+        </div>
+      ) : isLoading === false ? (
+        <div className="choices">
+          <p>Loading...</p>
+        </div>
+      ) : (
+        <div className="choices">
+          <p>{myHand}</p>
+          <p>{cpuHand}</p>
+        </div>
+      )}
       <div className="counter-wrapper">
         <h4>{count}</h4>
         <h4>{cpuCount}</h4>
